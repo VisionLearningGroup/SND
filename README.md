@@ -11,7 +11,7 @@ This repository contains codes used for experiments of image classification, sem
 We split the codes into four directories, base, cdan, adaptseg, and advent since each method employs different structures.
 
 
-[base](nc_ps): image classification with pseudo-labeling (PS) and neighborhood clustering (NC), and toy experiments. <br>
+[nc_ps](nc_ps): image classification with pseudo-labeling (PS) and neighborhood clustering (NC), and toy experiments. <br>
 [cdan](cdan): image classification with CDAN and MCC (borrowed from [CDAN](https://github.com/thuml/CDAN) and [MCC](https://github.com/thuml/Versatile-Domain-Adaptation)). <br>
 [AdaptSegNet](AdaptSegNet): semantic segmentation with adaptsegnet. <br>
 Advent(coming soon) will be from [ADVENT](https://github.com/valeoai/ADVENT).
