@@ -4,12 +4,11 @@ This repository provides code for the paper.
 Please go to our project page to quickly understand the content of the paper or read our paper.
 ### [Project Page (Coming soon)]()  [Paper](https://arxiv.org/pdf/2108.10860.pdf)
 
-
 ## Introduction
 This repository contains codes used for experiments of image classification, semantic segmentation, and toy datasets.
 We split the codes into four directories, base, cdan, adaptseg, and advent since each method employs different structures.
-"base" contains code for image classification with pseudo-labeling (PS) and neighborhood clustering (NC), and toy experiments.
-cdan contains code for image classification with CDAN and MCC (borrowed from [CDAN](https://github.com/thuml/CDAN) and [MCC](https://github.com/thuml/Versatile-Domain-Adaptation)).
+[base](nc_ps/README.md) contains code for image classification with pseudo-labeling (PS) and neighborhood clustering (NC), and toy experiments.
+[cdan](cdan/README.md) contains code for image classification with CDAN and MCC (borrowed from [CDAN](https://github.com/thuml/CDAN) and [MCC](https://github.com/thuml/Versatile-Domain-Adaptation)).
 adaptseg is from [AdaptSeg](https://github.com/wasidennis/AdaptSegNet). advent is from [ADVENT](https://github.com/valeoai/ADVENT).
 
 
