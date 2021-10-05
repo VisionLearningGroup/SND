@@ -17,6 +17,7 @@ adaptseg is from [AdaptSeg](https://github.com/wasidennis/AdaptSegNet). advent i
 The code in the repository should work with Python 3.6.9, Pytorch 1.6.0, Torch Vision 0.7.0, [Apex](https://github.com/NVIDIA/apex).
 In some experiments, we used the nvidia apex library for memory efficient high-speed training.
 To track the training details, we also used [neptune](https://docs.neptune.ai/getting-started/installation), but this is optional configuration.
+You also need sklearn (0.23.2 is used), which is required in image classification.
 Please follow the instructions on each directory for other requirements.
 
 ### Reference
