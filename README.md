@@ -17,7 +17,7 @@ We split the codes into four directories, base, cdan, adaptseg, and advent since
 Advent(coming soon) will be from [ADVENT](https://github.com/valeoai/ADVENT).
 
 
-## Environment
+## Requirement
 Python 3.6.9, Pytorch 1.6.0, Torch Vision 0.7.0, [Apex](https://github.com/NVIDIA/apex), and sklearn (0.23.2). <br>
 
 In some experiments, we used the nvidia apex library for memory efficient high-speed training. <br>
@@ -25,7 +25,7 @@ In some experiments, we used the nvidia apex library for memory efficient high-s
 To track the training details, we also used [neptune](https://docs.neptune.ai/getting-started/installation), but this is optional configuration.
 Please follow the instructions on each directory for other requirements.
 
-### Reference
+## Reference
 This repository is contributed by [Kuniaki Saito](http://cs-people.bu.edu/keisaito/).
 If you consider using this code or its derivatives, please consider citing:
 
