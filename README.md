@@ -1,10 +1,12 @@
-# [Tune it the Right Way: Unsupervised Validation of Domain Adaptationvia Soft Neighborhood Densit (ICCV 2021)](https://arxiv.org/pdf/2108.10860.pdf)
+# [Tune it the Right Way: Unsupervised Validation of Domain Adaptationvia Soft Neighborhood Density (ICCV 2021)](https://arxiv.org/pdf/2108.10860.pdf)
+#### [Project Page (Coming soon)]()  [Paper](https://arxiv.org/pdf/2108.10860.pdf)
 ![Overview](imgs/mainfig_git_snd.png)
 
-### [Project Page (Coming soon)]()  [Paper](https://arxiv.org/pdf/2108.10860.pdf)
 
 ## Introduction
+In this work, we aim to build a criterion that can tune the hyper-parameters of unsupervised domain adaptation model in an unsupervised way.
 This repository contains codes used for experiments of image classification, semantic segmentation, and toy datasets.
+## Directories
 We split the codes into four directories, base, cdan, adaptseg, and advent since each method employs different structures.
 
 
