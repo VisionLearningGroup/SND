@@ -1,12 +1,11 @@
 # Image classification with CDAN and MCC
 
-## Environment
+## Requirements
 Python 3.6.9, Pytorch 1.6.0, Torch Vision 0.7.0.
 To track the training details, we also used [neptune](https://docs.neptune.ai/getting-started/installation), but this is optional configuration.
 You also need sklearn (0.23.2 is used).
 
-
-## Preparation
+## Dataset Preparation
 For dataset preparation, please follow [nc_ps/README.md](https://github.com/VisionLearningGroup/SND/blob/main/nc_ps/README.md)
 
 We are using the same datasets. Do not forget to put a dataset and txt file link in this directory (./data, ./txt).

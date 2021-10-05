@@ -7,9 +7,9 @@ Kuniaki Saito, Donghyun Kim, Piotr Teterwak, Stan Sclaroff, Trevor Darrell, and 
 ## Introduction
 In this work, we aim to build a criterion that can tune the hyper-parameters of unsupervised domain adaptation model in an unsupervised way.
 This repository contains codes used for experiments of image classification, semantic segmentation, and toy datasets.
+
 ## Directories
 We split the codes into four directories, base, cdan, adaptseg, and advent since each method employs different structures.
-
 
 [nc_ps](nc_ps): image classification with pseudo-labeling (PS) and neighborhood clustering (NC), and toy experiments. <br>
 [cdan](cdan): image classification with CDAN and MCC (borrowed from [CDAN](https://github.com/thuml/CDAN) and [MCC](https://github.com/thuml/Versatile-Domain-Adaptation)). <br>

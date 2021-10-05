@@ -1,10 +1,10 @@
 # Image classification with Neighborhood Clustering and Pseudo-Labeling
 
-## Environment
+## Requirements
 Python 3.6.9, Pytorch 1.6.0, Torch Vision 0.7.0, [Apex](https://github.com/NVIDIA/apex).
 We used the nvidia apex library for memory efficient high-speed training. You also need sklearn (0.23.2 is used).
 
-## Data Preparation
+## Dataset Preparation
 
 [Office Dataset](https://people.eecs.berkeley.edu/~jhoffman/domainadapt/)
 [OfficeHome Dataset](http://hemanthdv.org/OfficeHome-Dataset/) [VisDA](https://github.com/VisionLearningGroup/taskcv-2017-public/tree/master/classification)
@@ -27,7 +27,7 @@ Prepare dataset in data directory.
 
 File list is stored in ./txt.
 
-## Train
+## Training and evaluation
 
 All training script is stored in scripts_exp directory.
 
