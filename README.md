@@ -1,22 +1,25 @@
 # [Tune it the Right Way: Unsupervised Validation of Domain Adaptationvia Soft Neighborhood Densit (ICCV 2021)](https://arxiv.org/pdf/2108.10860.pdf)
+![Overview](imgs/mainfig_git_snd.png)
 
-This repository provides code for the paper.
-Please go to our project page to quickly understand the content of the paper or read our paper.
 ### [Project Page (Coming soon)]()  [Paper](https://arxiv.org/pdf/2108.10860.pdf)
 
 ## Introduction
 This repository contains codes used for experiments of image classification, semantic segmentation, and toy datasets.
 We split the codes into four directories, base, cdan, adaptseg, and advent since each method employs different structures.
-[base](nc_ps) contains code for image classification with pseudo-labeling (PS) and neighborhood clustering (NC), and toy experiments.
-[cdan](cdan) contains code for image classification with CDAN and MCC (borrowed from [CDAN](https://github.com/thuml/CDAN) and [MCC](https://github.com/thuml/Versatile-Domain-Adaptation)).
-adaptseg is from [AdaptSeg](https://github.com/wasidennis/AdaptSegNet). advent is from [ADVENT](https://github.com/valeoai/ADVENT).
+
+
+[base](nc_ps): image classification with pseudo-labeling (PS) and neighborhood clustering (NC), and toy experiments. <br>
+[cdan](cdan): image classification with CDAN and MCC (borrowed from [CDAN](https://github.com/thuml/CDAN) and [MCC](https://github.com/thuml/Versatile-Domain-Adaptation)). <br>
+[AdaptSegNet](AdaptSegNet): semantic segmentation with adaptsegnet. <br>
+Advent(coming soon) will be from [ADVENT](https://github.com/valeoai/ADVENT).
 
 
 ## Environment
-The code in the repository should work with Python 3.6.9, Pytorch 1.6.0, Torch Vision 0.7.0, [Apex](https://github.com/NVIDIA/apex).
-In some experiments, we used the nvidia apex library for memory efficient high-speed training.
+Python 3.6.9, Pytorch 1.6.0, Torch Vision 0.7.0, [Apex](https://github.com/NVIDIA/apex), and sklearn (0.23.2). <br>
+
+In some experiments, we used the nvidia apex library for memory efficient high-speed training. <br>
+
 To track the training details, we also used [neptune](https://docs.neptune.ai/getting-started/installation), but this is optional configuration.
-You also need sklearn (0.23.2 is used), which is required in image classification.
 Please follow the instructions on each directory for other requirements.
 
 ### Reference
