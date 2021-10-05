@@ -7,7 +7,8 @@ You also need sklearn (0.23.2 is used).
 
 
 ## Preparation
-For dataset preparation, please follow [../nc_ps/README.md](https://github.com/VisionLearningGroup/SND/blob/main/base/README.md)
+For dataset preparation, please follow [nc_ps/README.md](https://github.com/VisionLearningGroup/SND/blob/main/nc_ps/README.md)
+
 We are using the same datasets. Do not forget to put a dataset and txt file link in this directory (./data, ./txt).
 
 ## Train
