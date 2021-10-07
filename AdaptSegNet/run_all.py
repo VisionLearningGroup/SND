@@ -542,8 +542,8 @@ def eval_siment(step, model, targetloader, interp):
 
 
 if __name__ == '__main__':
-    #adv_target1 = [0.0002, 0.0001, 0.001, 0.0005, 0.0003]
-    adv_target1 = [0.01, 0.1]
+    adv_target1 = [0.0002, 0.0001, 0.001, 0.0005, 0.0003]
+    #adv_target1 = [0.01, 0.1]
     adv_target2 = [0.001]
     output_log = osp.join(args.snapshot_dir, "result.txt")
     all_results = []
@@ -558,7 +558,7 @@ if __name__ == '__main__':
     logging.info(all_results)
     source_iou_best = 0
     siment_best = 0
-    entropy_best = 0
+    entropy_best = 1e5
 
     miou_best = 0
     miou_siment_selected = 0
@@ -574,6 +574,7 @@ if __name__ == '__main__':
         if result['siment best'] > siment_best:
             siment_best = result['siment best']
             miou_siment_selected = result['miou siment select']
+
     output = "source best %s entropy best %s siment best %s \n" %(source_iou_best, entropy_best, siment_best)
     output += 'miou source best %s miou entropy best %s miou siment best %s \n' % (miou_source_selected,
                                                                                   miou_entropy_selected,
