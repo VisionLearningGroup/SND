@@ -106,6 +106,8 @@ def get_arguments():
                         help="lambda_adv for adversarial training.")
     parser.add_argument("--momentum", type=float, default=MOMENTUM,
                         help="Momentum component of the optimiser.")
+    parser.add_argument("--neptune", action="store_true",
+                        help="Whether to use neptune to track performance.")
     parser.add_argument("--not-restore-last", action="store_true",
                         help="Whether to not restore last (FC) layers.")
     parser.add_argument("--num-classes", type=int, default=NUM_CLASSES,
@@ -185,6 +187,7 @@ def main(lambda_adv_target1, lambda_adv_target2, output_log):
 
     #cudnn.enabled = True
     args.gpu = os.environ["CUDA_VISIBLE_DEVICES"]#args.gpu
+
     ## set up logger
     logger = logging.getLogger(__name__)
     logging.basicConfig(filename=output_log, format="%(message)s")
@@ -206,25 +209,26 @@ def main(lambda_adv_target1, lambda_adv_target2, output_log):
                 new_params['.'.join(i_parts[1:])] = saved_state_dict[i]
                 # print i_parts
         model.load_state_dict(new_params)
-    neptune.init('keisaito/sandbox')
-    current_name = os.path.basename(__file__)
-    PARAMS = {'method': 'segmentation',
-              'machine': socket.gethostname(),
-              'file': current_name,
-              'net': args.model,
-              'lambda_adv_target1': lambda_adv_target1,
-              'lambda_adv_target2': lambda_adv_target2}
-    print(PARAMS)
-    filename = "Cityscape"
-    save_p = './result/cityscapes_lamb1_%s_lamb2_%s'%(lambda_adv_target1, lambda_adv_target2)
 
-    neptune.create_experiment(name=filename, params=PARAMS)
+    current_name = os.path.basename(__file__)
+    save_p = './result/cityscapes_lamb1_%s_lamb2_%s' % (lambda_adv_target1, lambda_adv_target2)
+    if args.neptune:
+        ## replace the path if use neptune.
+        neptune.init('keisaito/sandbox')
+        PARAMS = {'method': 'segmentation',
+                  'machine': socket.gethostname(),
+                  'file': current_name,
+                  'net': args.model,
+                  'lambda_adv_target1': lambda_adv_target1,
+                  'lambda_adv_target2': lambda_adv_target2}
+        print(PARAMS)
+        filename = "Cityscape"
+        neptune.create_experiment(name=filename, params=PARAMS)
 
     model.train()
     model.cuda()
 
     #cudnn.benchmark = True
-
     # init D
     model_D1 = FCDiscriminator(num_classes=args.num_classes)
     model_D2 = FCDiscriminator(num_classes=args.num_classes)
@@ -235,8 +239,7 @@ def main(lambda_adv_target1, lambda_adv_target2, output_log):
     model_D2.train()
     model_D2.cuda()
 
-    if not os.path.exists(args.snapshot_dir):
-        os.makedirs(args.snapshot_dir)
+
 
     trainloader = data.DataLoader(
         GTA5DataSet(args.data_dir, args.data_list, max_iters=args.num_steps * args.iter_size * args.batch_size,
@@ -267,7 +270,6 @@ def main(lambda_adv_target1, lambda_adv_target2, output_log):
                                         pin_memory=True)
 
     targetloader_iter = iter(targetloader)
-
     # implement model.optim_parameters(args) to handle different models' lr setting
 
     optimizer = optim.SGD(model.optim_parameters(args),
@@ -436,8 +438,7 @@ def main(lambda_adv_target1, lambda_adv_target2, output_log):
         optimizer.step()
         optimizer_D1.step()
         optimizer_D2.step()
-        # import pdb
-        # pdb.set_trace()
+
         print('exp = {}'.format(args.snapshot_dir))
         print(
             'iter = {0:8d}/{1:8d}, loss_seg1 = {2:.3f} loss_seg2 = {3:.3f} loss_adv1 = {4:.3f}, loss_adv2 = {5:.3f} loss_D1 = {6:.3f} loss_D2 = {7:.3f}'.format(
@@ -476,11 +477,11 @@ def main(lambda_adv_target1, lambda_adv_target2, output_log):
                 miou_entropy_selected = miou
             if miou > miou_best:
                 miou_best = miou
-            #if args.neptune:
-            neptune.log_metric('sim entropy', siment)
-            neptune.log_metric('entropy', ent)
-            neptune.log_metric('miou', miou)
-            neptune.log_metric('miou source', miou_source)
+            if args.neptune:
+                neptune.log_metric('SND', siment)
+                neptune.log_metric('entropy', ent)
+                neptune.log_metric('miou', miou)
+                neptune.log_metric('miou source', miou_source)
             print('miou %s sim ent %s entropy %s' %(miou, siment, ent))
             output = 'miou %s sim ent %s entropy %s \n' %(miou_source, siment, ent)
             output += 'miou source best %s miou entropy best %s miou siment best %s \n' %(miou_source_selected,
@@ -547,6 +548,8 @@ if __name__ == '__main__':
     adv_target2 = [0.001]
     output_log = osp.join(args.snapshot_dir, "result.txt")
     all_results = []
+    if not os.path.exists(args.snapshot_dir):
+        os.makedirs(args.snapshot_dir)
     for adv_1 in adv_target1:
         for adv_2 in adv_target2:
             dict_result = main(adv_1, adv_2, output_log)
