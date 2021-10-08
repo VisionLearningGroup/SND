@@ -1,5 +1,5 @@
 # [Tune it the Right Way: Unsupervised Validation of Domain Adaptationvia Soft Neighborhood Density (ICCV 2021)](https://arxiv.org/pdf/2108.10860.pdf)
-#### [[Project Page (Coming soon)]]()  [[Paper]](https://arxiv.org/pdf/2108.10860.pdf)
+#### [[Project Page]](https://cs-people.bu.edu/keisaito/research/SND.html)  [[Paper]](https://arxiv.org/pdf/2108.10860.pdf)
 ![Overview](imgs/mainfig_git_snd.png)
 
 Kuniaki Saito, Donghyun Kim, Piotr Teterwak, Stan Sclaroff, Trevor Darrell, and Kate Saenko
